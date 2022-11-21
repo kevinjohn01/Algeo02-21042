@@ -1,27 +1,6 @@
 import numpy as np
 
 
-def real_eigenvals(A):
-    Ak = np.copy(A)
-    n = Ak.shape[0]
-    for _ in range(2000):
-        s = Ak[-1, -1]
-        si = s * np.eye(n)
-        Q, R = qr(np.subtract(Ak, si))
-        Ak = np.add(R @ Q, si)
-    eigens = []
-    i = 0
-    while i < n - 1:
-        if np.isclose(Ak[i + 1, i], 0, atol=1e-6):
-            eigens.append(Ak[i, i])
-            i += 1
-        else:
-            i += 2
-    if len(eigens) != n:
-        eigens.append(Ak[-1, -1])
-    return np.array(eigens)
-
-
 def upper_hessenberg(A):
     Ak = np.copy(A)
     n = Ak.shape[0]
@@ -56,14 +35,13 @@ def householder(a):
     return H
 
 
-def eigval2x2(A):
-    a = 1
-    b = (-A[0, 0]) + (-A[1, 1])
-    c = (-A[0, 0]) * (-A[1, 1]) - A[1, 0] * A[0, 1]
-    return np.roots([a, b, c])
-
-
-# if __name__ == '__main__':
-#     A = np.random.rand(20, 20) * 100
-#     print(np.sort_complex(eigenvals(A)))
-#     print(np.sort_complex(np.linalg.eig(A)[0]))
+def eigens(A):
+    Ak = upper_hessenberg(A)
+    Q, _ = qr(Ak)
+    E = Q.T @ Ak @ Q
+    U = Q
+    for _ in range(1000):
+        Q, _ = qr(E)
+        E = Q.T @ E @ Q
+        U = U @ Q
+    return np.diag(E), U
