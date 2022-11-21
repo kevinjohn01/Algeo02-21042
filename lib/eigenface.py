@@ -14,20 +14,20 @@ def multiply(a,b):
 #step 2
 #Menghitung matriks rata-rata
 def average(matriks):
-  matrixavg = np.zeros((N,N))
-  for k in range(count):
+  matrixavg = np.zeros((len(matriks[0]),len(matriks[0])))
+  for k in range(len(matriks)):
     currmatrix = np.array(matriks[k])
     matrixavg += currmatrix
-  for i in range(N):
-    for j in range(N):
-      matrixavg[i][j] = matrixavg[i][j]/count
+  for i in range(len(matriks[0])):
+    for j in range(len(matriks[0])):
+      matrixavg[i][j] = matrixavg[i][j]/len(matriks)
   #print(matrixavg)
   return matrixavg
 
 #step 3
 #Menghitung selisih matriks dengan rata-rata
 def selisih(matriks,matrixavg):
-  for k in range(count):
+  for k in range(len(matriks)):
     selisih = [[0 for j in range(len(matriks[0]))] for i in range(len(matriks[0][0]))]
     for i in range(len(matriks[0])):
       for j in range(len(matriks[0][0])):
@@ -48,9 +48,9 @@ def covarian2(m):
 
 #Menghitung matriks covarian
 def covarian(matriks):
-  A = [[0 for j in range (N)] for i in range(N*count)]
-  for i in range(N*count):
-    for j in range(N):
+  A = [[0 for j in range (len(matriks[0]))] for i in range((len(matriks[0]))*(len(matriks)))]
+  for i in range((len(matriks[0]))*(len(matriks))):
+    for j in range(len(matriks[0])):
       if i<N :
         A[i][j] = matriks[0][i][j]
       else:
@@ -74,8 +74,8 @@ def eigenvector(matriks):
 
 #step 6
 def eigenface(matriks, eigen):
-  eigenface = [[[0 for j in range(N)] for i in range(N)] for k in range(count)]
-  for k in range(count):
+  eigenface = [[[0 for j in range(len(matriks[0]))] for i in range(len(matriks[0]))] for k in range(len(matriks))]
+  for k in range(len(matriks)):
     array1 = np.array(matriks[k])
     eigenface[k] = multiply(eigen,array1)
   #print("eigenface:")
@@ -102,30 +102,30 @@ def process(matriks,matrixnew):
 
   #mencari euclidean distance
   panjangnew = 0
-  for i in range(N):
-    for j in range(N):
+  for i in range(len(matriks[0])):
+    for j in range(len(matriks[0])):
       panjangnew += eigenfacenew[i][j]**2
   panjangnew = panjangnew**(0.5)
   #print(panjangnew)
 
-  arrpanjang = [0 for k in range(count)]
-  for k in range(count):
+  arrpanjang = [0 for k in range(len(matriks))]
+  for k in range(len(matriks)):
     panjang = 0
-    for i in range(N):
-      for j in range(N):
+    for i in range(len(matriks[0])):
+      for j in range(len(matriks[0])):
         panjang += eigenfaces[k][i][j]**2
     panjang = panjang**(0.5)
     arrpanjang[k] = panjang
   #print(arrpanjang)
 
   #mencari jarak terdekat
-  for k in range(count):
+  for k in range(len(matriks)):
     arrpanjang[k] = abs(arrpanjang[k]-panjangnew)
   #print(arrpanjang)
 
   min = arrpanjang[0]
   idxmin = 0
-  for k in range(1,count):
+  for k in range(1,len(matriks)):
     if arrpanjang[k] < min:
       min = arrpanjang[k]
       idxmin = k
@@ -134,8 +134,6 @@ def process(matriks,matrixnew):
 
 #TAHAP PENGENALAN WAJAH
 #testing
-N = 4
-count = 12
 matriks =[[[4,5,6,1],[1,2,3,4],[7,8,9,3],[7,8,9,3]],
           [[1,1,1,1],[0,1,0,1],[1,2,2,5],[1,2,2,5]], 
           [[1,2,3,4],[4,5,6,7],[7,8,9,1],[4,5,6,7]],
@@ -149,6 +147,7 @@ matriks =[[[4,5,6,1],[1,2,3,4],[7,8,9,3],[7,8,9,3]],
           [[8,1,9,3],[9,1,0,1],[1,6,2,2],[8,1,8,4]],
           [[1,1,1,1],[2,2,2,2],[2,2,2,2],[1,1,1,1]]]
 
-matrixnew = [[8,1,8,3],[9,1,0,1],[1,9,2,2],[8,1,8,3]]
+matrixnew =[[4,5,6,2],[1,2,3,4],[7,8,9,3],[7,8,9,3]]
 process(matriks,matrixnew)
+
 
