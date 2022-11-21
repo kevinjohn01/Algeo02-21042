@@ -40,7 +40,8 @@ def eigens(A):
     Q, _ = qr(Ak)
     E = Q.T @ Ak @ Q
     U = Q
-    for _ in range(1000):
+    for i in range(150):
+        print(f"iterasi ke-{i+1}")
         Q, _ = qr(E)
         E = Q.T @ E @ Q
         U = U @ Q
