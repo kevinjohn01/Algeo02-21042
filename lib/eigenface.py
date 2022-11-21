@@ -1,5 +1,6 @@
 import numpy as np
 
+#Fungsi untuk perkalian matriks
 def multiply(a,b):
   arr1 = np.array(a)
   arr2 = np.array(b)
@@ -51,11 +52,11 @@ def covarian(matriks):
   A = [[0 for j in range (len(matriks[0]))] for i in range((len(matriks[0]))*(len(matriks)))]
   for i in range((len(matriks[0]))*(len(matriks))):
     for j in range(len(matriks[0])):
-      if i<N :
+      if i<len(matriks[0]) :
         A[i][j] = matriks[0][i][j]
       else:
-        k = i//N
-        A[i][j] = matriks[k][i-(k*N)][j] 
+        k = i//len(matriks[0])
+        A[i][j] = matriks[k][i-(k*len(matriks[0]))][j] 
   #print(A)
   arrayA = np.array(A).T
 
@@ -65,6 +66,7 @@ def covarian(matriks):
   #print(C)
 
 #step 5
+#Menghitung vektor eigen
 def eigenvector(matriks):
   evalues, evectors = np.linalg.eig(matriks)
   return evectors
@@ -73,6 +75,7 @@ def eigenvector(matriks):
 #print(eigen)
 
 #step 6
+#Menghitung eigenface
 def eigenface(matriks, eigen):
   eigenface = [[[0 for j in range(len(matriks[0]))] for i in range(len(matriks[0]))] for k in range(len(matriks))]
   for k in range(len(matriks)):
@@ -123,6 +126,7 @@ def process(matriks,matrixnew):
     arrpanjang[k] = abs(arrpanjang[k]-panjangnew)
   #print(arrpanjang)
 
+  #Mencari nilai minimum
   min = arrpanjang[0]
   idxmin = 0
   for k in range(1,len(matriks)):
