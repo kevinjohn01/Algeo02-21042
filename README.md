@@ -11,7 +11,6 @@
 * [Usage](#penggunaan)
 * [Project Status](#status-project)
 * [Room for Improvement](#room-for-improvement)
-* [Acknowledgements](#acknowledgements)
 * [Group Members](#group-members)
 * [Program Structures](#program-structures)
 
@@ -35,6 +34,7 @@ Prerequirement
 - Python: https://www.python.org/downloads/
 
 ## Usage
+python -u interface.py
 
 ## Status Project
 Project is: currently worked on
@@ -42,8 +42,6 @@ Project is: currently worked on
 ## Room for Improvement
 1. Meningkatakan akurasi program
 2. Meningkatkan efisiensi waktu berjalannya program
-
-## Acknowledgements
 
 ## Group Members
 
@@ -54,8 +52,7 @@ Project is: currently worked on
 | 13521083   | Moch Sofyan Firdaus                       | Nilai dan vektor eigen         |
 
 ## Program Structures
-
-'''
+```
 | README.md
 | .gitignore
 |
@@ -67,5 +64,5 @@ Project is: currently worked on
 |    |-
 |- doc
      |- Algeo02-21042.pdf
-'''
+```
 
