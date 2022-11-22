@@ -41,7 +41,8 @@ def get_eigenfaces(dataset_folder):
     e, v = eigens(cov)
     eigenfaces = []
     for i in range(v.shape[0]):
-        eigenfaces.append(A @ v[i])
+        eigenface = A @ v[i]
+        eigenfaces.append(eigenface / np.linalg.norm(eigenface))
 
     order = np.argsort(e)[::-1]
     return (
