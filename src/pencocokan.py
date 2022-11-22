@@ -5,12 +5,15 @@ import numpy as np
 
 
 K = 37
-IMG_PER_FOLDER = 5
+IMG_PER_FOLDER = -1
 THRESHOLD = 4250
 
 trained_weights = []
 image_paths = []
 cur_dataset_folder = ""
+eigenfaces = []
+avg_face = []
+normalized_faces = []
 
 
 def get_eigenfaces(dataset_folder):
@@ -43,7 +46,6 @@ def get_eigenfaces(dataset_folder):
     order = np.argsort(e)[::-1]
     return (
         np.array(eigenfaces)[order][:K],
-        images,
         normalized_faces,
         avg_face,
     )
@@ -52,26 +54,28 @@ def get_eigenfaces(dataset_folder):
 def test_image(dataset, filepath):
     global trained_weights
     global image_paths
+    global eigenfaces
+    global avg_face
+    global normalized_faces
     print(filepath)
     test_image = cv2.imread(filepath, 0)
     test_image = cv2.resize(test_image, (100, 100), interpolation=cv2.INTER_CUBIC)
     test_image = np.reshape(test_image, (10000, 1))
-    test_image_weights = []
     if cur_dataset_folder != dataset:
-        eigenfaces, images, normalized_faces, avg_face = get_eigenfaces(dataset)
-        phi = test_image - avg_face
-        test_image_weights = []
-        for i in range(min(K, len(images))):
-            test_image_weights.append(eigenfaces[i].T @ phi)
-        test_image_weights = np.row_stack(test_image_weights)
+        eigenfaces, normalized_faces, avg_face = get_eigenfaces(dataset)
         omega = []
-        print(len(images))
-        for i in range(len(images)):
+        print(len(normalized_faces))
+        for i in range(len(normalized_faces)):
             weights = []
-            for j in range(min(K, len(images))):
+            for j in range(min(K, len(normalized_faces))):
                 weights.append(eigenfaces[j].T @ normalized_faces[i])
             omega.append(np.row_stack(weights))
         trained_weights = omega
+    phi = test_image - avg_face
+    test_image_weights = []
+    for i in range(min(K, len(normalized_faces))):
+        test_image_weights.append(eigenfaces[i].T @ phi)
+    test_image_weights = np.row_stack(test_image_weights)
     idxmin = -1
     euclid = THRESHOLD + 1
     for i in range(len(trained_weights)):
