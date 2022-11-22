@@ -1,4 +1,6 @@
 import numpy as np
+import imgprocess as img
+import cv2
 
 #Fungsi untuk perkalian matriks
 def multiply(a,b):
@@ -17,7 +19,7 @@ def multiply(a,b):
 def average(matriks):
   matrixavg = np.zeros((len(matriks[0]),len(matriks[0])))
   for k in range(len(matriks)):
-    currmatrix = np.array(matriks[k])
+    currmatrix = np.array(matriks[k], dtype = np.float32)
     matrixavg += currmatrix
   for i in range(len(matriks[0])):
     for j in range(len(matriks[0])):
@@ -39,14 +41,6 @@ def selisih(matriks,matrixavg):
 #print(matriks)
 
 #step 4
-def covarian2(m):
-  matrix = m
-  arraym = np.array(m)
-  transposed = arraym.T
-  hasil = multiply(matrix,transposed)
-
-  return hasil
-
 #Menghitung matriks covarian
 def covarian(matriks):
   A = [[0 for j in range (len(matriks[0]))] for i in range((len(matriks[0]))*(len(matriks)))]
@@ -60,7 +54,7 @@ def covarian(matriks):
   #print(A)
   arrayA = np.array(A).T
 
-  C = covarian2(arrayA)
+  C = np.cov(arrayA)
   return C
   #print("matriks kovarian: ")
   #print(C)
@@ -83,6 +77,8 @@ def eigenface(matriks, eigen):
     eigenface[k] = multiply(eigen,array1)
   #print("eigenface:")
   #print(eigenface)
+  cv2.imshow("eigenface", np.array(eigenface[0], dtype=np.uint8))
+  cv2.waitKey(0)
   return eigenface
 
 def selisihnew(matrixnew,matrixavg):
@@ -150,8 +146,9 @@ matriks =[[[4,5,6,1],[1,2,3,4],[7,8,9,3],[7,8,9,3]],
           [[8,1,9,3],[9,1,0,1],[1,5,2,2],[8,1,8,3]],
           [[8,1,9,3],[9,1,0,1],[1,6,2,2],[8,1,8,4]],
           [[1,1,1,1],[2,2,2,2],[2,2,2,2],[1,1,1,1]]]
-
-matrixnew =[[4,5,6,2],[1,2,3,4],[7,8,9,3],[7,8,9,3]]
-process(matriks,matrixnew)
+matrix2 = img.load_image_data('C:\\Users\\User\\Documents\\GitHub\\Algeo02-21042\\105_classes_pins_dataset\\pins_Adriana Lima')
+matrixnew = matrix2[0]
+#print(matrix2)
+process(matrix2,matrixnew)
 
 
