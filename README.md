@@ -3,53 +3,69 @@
 > Aplikasi pengenalan wajah yang menganalisis wajah seseorang dari sekelompok dataset
 
 ## Table Of Contents
-* [Informasi Umum](#informasi-umum)
-* [Teknologi yang digunakan](#teknologi-yang-digunakan)
-* [Features](#fitur)
+* [General Information](#general-information)
+* [Technologies Used](#technologies-used)
+* [Features](#features)
 * [Screenshots](#screenshots)
 * [Setup](#setup)
 * [Usage](#penggunaan)
 * [Project Status](#status-project)
 * [Room for Improvement](#room-for-improvement)
 * [Acknowledgements](#acknowledgements)
-* [Anggota Kelompok](#anggota-kelompok)
-* [Struktur Program](#struktur-program)
+* [Group Members](#group-members)
+* [Program Structures](#program-structures)
 
-## Informasi Umum
+## General Information
 - Aplikasi ini adalah aplikasi yang dapat mencocokkan satu foto wajah seseorang dengan foto orang-orang yang terdapat di dalam dataset.
-- Aplikasi ini merupakan penerapan nilai eigen dan vektor eigen ke dunia nyata.
-- Aplikasi ini dibuat sebagai pemenuhan tugas besar 2 mata kuliah Aljabar Linear dan Geometri IF2123.
+- Aplikasi ini merupakan penerapan nilai eigen dan vektor eigen ke dunia nyata dengan menggunakan bahasa pemrograman python.
+- Aplikasi ini dibuat sebagai pemenuhan Tugas Besar 2 mata kuliah Aljabar Linear dan Geometri IF2123.
 
-## Teknologi yang digunakan
+## Technologies Used
+Python 3.9.6
 
-## Fitur
+## Features
 Fitur dalam aplikasi ini adalah:
 - Fitur pengenalan wajah
 
 ## Screenshots
+![Tampilan Awal](./test/GUIpreview.png)
 
 ## Setup
+Prerequirement
+- Python: https://www.python.org/downloads/
 
-## Penggunaan
+## Usage
 
 ## Status Project
+Project is: currently worked on
 
 ## Room for Improvement
+1. Meningkatakan akurasi program
+2. Meningkatkan efisiensi waktu berjalannya program
 
 ## Acknowledgements
 
-## Anggota Kelompok
+## Group Members
 
-| NIM      | Nama                                      |
-| -------- | ----------------------------------------- |
-| 13521042 | Kevin John Wesley Hutabarat               |
-| 13521073 | Ezra Maringan Christian Mastra Hutagaol   |
-| 13521083 | Moch Sofyan Firdaus                       |
+| NIM        | Names                                     | Task Distribution              |
+| -----------| ----------------------------------------- |--------------------------------|
+| 13521042   | Kevin John Wesley Hutabarat               | Algoritma Eigenface            |
+| 13521073   | Ezra Maringan Christian Mastra Hutagaol   | GUI                            |
+| 13521083   | Moch Sofyan Firdaus                       | Nilai dan vektor eigen         |
 
-## Struktur Program
+## Program Structures
 
-
-
-
-
+'''
+| README.md
+| .gitignore
+|
+|- src
+|    |- eigen.py
+|    |- imgprocess.py
+|    |- eigenface.py
+|- test
+|    |-
+|- doc
+     |- Algeo02-21042.pdf
+'''
 
