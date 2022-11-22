@@ -29,14 +29,9 @@ _, v = eigens(cov)
 
 #Menghitung eigenfaces
 eigenfaces = []
-for i in range(213):
+for i in range(v.shape[0]):
     eigenfaces.append(A @ v[i])
 
-img = np.array(eigenfaces[212], dtype=np.int32)
-img = np.reshape(img, (100, 100))
-img = np.array(img, dtype=np.int8)
-img = np.reshape(np.array(eigenfaces[0], dtype=np.int8), (100, 100))
-
-cv2.imshow("eigenface", img)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+for i in range(len(eigenfaces)):
+    img = np.reshape(np.array(eigenfaces[i], dtype=np.int8), (100, 100))
+    cv2.imwrite(f"eigenfaces/custom_eigen/eigenface{i+1}.jpg", img)
