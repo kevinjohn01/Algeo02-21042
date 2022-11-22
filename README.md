@@ -3,16 +3,17 @@
 > Aplikasi pengenalan wajah yang menganalisis wajah seseorang dari sekelompok dataset
 
 ## Table Of Contents
-* [General Information]
-* [Technologies Used]
-* [Features]
-* [Screenshots]
-* [Setup]
-* [Usage]
-* [Project Status]
-* [Room for Improvement]
-* [Acknowledgements]
-* [Contact]
+* [Informasi Umum](#informasi-umum)
+* [Teknologi yang digunakan](#teknologi-yang-digunakan)
+* [Features](#fitur)
+* [Screenshots](#screenshots)
+* [Setup](#setup)
+* [Usage](#penggunaan)
+* [Project Status](#status-project)
+* [Room for Improvement](#room-for-improvement)
+* [Acknowledgements](#acknowledgements)
+* [Anggota Kelompok](#anggota-kelompok)
+* [Struktur Program](#struktur-program)
 
 ## Informasi Umum
 - Aplikasi ini adalah aplikasi yang dapat mencocokkan satu foto wajah seseorang dengan foto orang-orang yang terdapat di dalam dataset.
