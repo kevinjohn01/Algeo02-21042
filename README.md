@@ -8,7 +8,7 @@
 * [Features](#features)
 * [Screenshots](#screenshots)
 * [Setup](#setup)
-* [Usage](#penggunaan)
+* [Usage](#usage)
 * [Project Status](#status-project)
 * [Room for Improvement](#room-for-improvement)
 * [Group Members](#group-members)
@@ -16,7 +16,7 @@
 
 ## General Information
 - Aplikasi ini adalah aplikasi yang dapat mencocokkan satu foto wajah seseorang dengan foto orang-orang yang terdapat di dalam dataset.
-- Aplikasi ini merupakan penerapan nilai eigen dan vektor eigen ke dunia nyata dengan menggunakan bahasa pemrograman python.
+- Aplikasi ini merupakan penerapan nilai eigen dan vektor eigen ke dunia nyata dengan menggunakan bahasa pemrograman python dan tools tkinter.
 
 ## Technologies Used
 Python 3.9.6
