@@ -42,13 +42,13 @@ def processimage():
         pimg_result.config(image=resultimage)
         pimg_result.image=resultimage
         not_found.config(text="")
-        execution_time_text.config(text="Execution time : "+str(round(execution_time))+" detik")
+        execution_time_text.config(text="Execution time : "+str(round(execution_time,1))+" detik")
         execution_time_text.place(x=550, y=535)
 
     else:
         not_found.place(x=550 ,y=410)
         not_found.config(text="Tidak ada gambar yang cocok")
-        execution_time_text.config(text="Execution time : "+str(round(execution_time))+" detik")
+        execution_time_text.config(text="Execution time : "+str(round(execution_time,1))+" detik")
         execution_time_text.place(x=550, y=535)
         # no_dataset_selected.config(text="Tidak ada gambar yang cocok")
         print("Tidak ada gambar yang cocok")
