@@ -10,24 +10,26 @@ gamma = []
 for i in range(A.shape[0]):
     gamma.append(np.reshape(A[i], (10000, 1)))
 
-#Menghitung rata-rata
+# Menghitung rata-rata
 gamma = np.array(gamma, dtype=np.uint8)
-psi = gamma.sum(axis=0) / gamma.shape[0]
+psi = gamma.mean(axis=0)
 
-#Mengurangkan matriks awal dengan rata-rata
+# Mengurangkan matriks awal dengan rata-rata
 A = []
+normalized_faces = []
 for i in range(gamma.shape[0]):
-    A.append(gamma[i] - psi)
-    sub_avg = A
+    normalized_face = gamma[i] - psi
+    normalized_faces.append(normalized_face)
+    A.append(normalized_face)
 
-#menghitung matriks covarian
-A = np.concatenate(A, axis=1)
+# menghitung matriks covarian
+A = np.column_stack(A)
 cov = A.T @ A
 
-#Menghitung eigenvector
+# Menghitung eigenvector
 _, v = eigens(cov)
 
-#Menghitung eigenfaces
+# Menghitung eigenfaces
 eigenfaces = []
 for i in range(v.shape[0]):
     eigenfaces.append(A @ v[i])

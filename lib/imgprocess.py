@@ -30,7 +30,7 @@ def load_image_data(
             )
             data.append(img)
     os.chdir(prev_dir)
-    return np.array(data, dtype=np.ndarray)
+    return np.array(data, dtype=np.uint8)
 
 
 def matrix_mean(mat: np.ndarray) -> np.ndarray:
