@@ -33,10 +33,10 @@ Prerequirement
 - Python: https://www.python.org/downloads/
 
 ## Usage
-python -u interface.py
+`python -u interface.py`
 
 ## Status Project
-Project is: currently worked on
+Project is: no longer worked on (completed)
 
 ## Room for Improvement
 1. Meningkatakan akurasi program
@@ -58,9 +58,10 @@ Project is: currently worked on
 |- src
 |    |- eigen.py
 |    |- imgprocess.py
-|    |- eigenface.py
+|    |- pencocokan.py
+|    |- interface.py
 |- test
-|    |-
+|    |- dataset
 |- doc
      |- Algeo02-21042.pdf
 ```
